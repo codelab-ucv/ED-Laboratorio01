@@ -16,12 +16,18 @@ public class Main {
         int opcion = Integer.parseInt(respuesta);
         switch (opcion) {
             case 1:
+                Ejercicio01.iniciar();
+                break;
             case 2:
+                break;
             case 3:
                 Ejercicio03.iniciar();
                 break;
             case 4:
+                break;
             case 5:
+                Ejercicio05.iniciar();
+                break;
             default:
                 break;
         }
