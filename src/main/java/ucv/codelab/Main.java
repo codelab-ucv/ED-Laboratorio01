@@ -16,6 +16,7 @@ public class Main {
         int opcion = Integer.parseInt(respuesta);
         switch (opcion) {
             case 1:
+            Ejercicio01.iniciar();
                 break;
             case 2:
                 break;
