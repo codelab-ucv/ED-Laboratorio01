@@ -5,7 +5,10 @@ public class Ejercicio04 {
     public static void iniciar() {
          // Solicitar el ingreso del sueldo básico y el cargo
          String sueldoBasicoStr = JOptionPane.showInputDialog("Ingrese el sueldo básico:");
-         String cargo = JOptionPane.showInputDialog("Ingrese el cargo del trabajador (O para Obrero, E para Empleado, J para Ejecutivo):");
+         String cargo = JOptionPane.showInputDialog("Ingrese el cargo del trabajador:"+
+                                                     "\n"+"O para Obrero"+
+                                                     "\n"+"E para Empleado"+
+                                                     "\n"+"J para Ejecutivo");
  
          // Convertir el sueldo básico a número
          double sueldoBasico = Double.parseDouble(sueldoBasicoStr);
@@ -24,13 +27,12 @@ public class Ejercicio04 {
              asignacion = 500;
              refrigerio = 250;
          } else {
-             JOptionPane.showMessageDialog(null, "Cargo no válido.");
+             JOptionPane.showMessageDialog(null, "CARGO NO VÁLIDO."+
+                                            "\n"+":) BYE BYE :)");
              System.exit(0);
          }
- 
          // Calcular el total de los ingresos
          double total = sueldoBasico + bonificacion + asignacion + refrigerio;
- 
          // Mostrar el resultado
          JOptionPane.showMessageDialog(null, "Total de ingresos: " + total);
      }
