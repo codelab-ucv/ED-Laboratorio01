@@ -5,40 +5,38 @@ import javax.swing.JOptionPane;
 public class Ejercicio05 {
 
     public static void iniciar() {
+        // Nike, Adidas, Fila
+        int[][] precios = { { 150, 160, 150 },
+                { 140, 150, 150 },
+                { 80, 85, 90 } };
 
-        int marca = getInt("Ingrese la marca");
-        int talla = getInt("Ingrese la talla");
+        int marca = getInt("""
+                Seleccione la marca
+                =====================
+                Nike       [ 1 ]
+                Adidas     [ 2 ]
+                Fila       [ 3 ]
+                """, 3);
+        int talla = getInt("""
+                Seleccione la talla
+                =====================
+                Talla 38   [ 1 ]
+                Talla 40   [ 2 ]
+                Talla 42   [ 3 ]
+                """, 3);
 
-        int precioBase;
+        // El limite es el stock
+        int ventas = getInt("Ingrese los pares a comprar", 50);
 
-        if (talla > 3 || talla < 1)
-            return;
+        int precioBruto = precios[marca - 1][talla - 1] * ventas;
 
-        switch (marca) {
-            case 1:
-                if (talla == 1)
-                    precioBase = 150;
-                else
-                    precioBase = 160;
-                break;
-            case 2:
-                if (talla == 1)
-                    precioBase = 140;
-                else
-                    precioBase = 150;
-                break;
-            case 3:
-                if (talla == 1)
-                    precioBase = 80;
-                else if (talla == 2)
-                    precioBase = 85;
-                else
-                    precioBase = 90;
-                break;
-            default:
-                return;
-        }
-        
+        double descuentoAplicado = precioBruto * descuento(ventas);
+        double precioNeto = precioBruto - descuentoAplicado;
+
+        JOptionPane.showMessageDialog(null, "Pares vendidos: " + ventas
+                + "\nPrecio bruto: " + precioBruto
+                + "\nDescuento: " + descuentoAplicado
+                + "\nPrecio neto: " + precioNeto);
     }
 
     /**
@@ -58,8 +56,33 @@ public class Ejercicio05 {
         return 0.15;
     }
 
-    private static int getInt(String mensaje) {
-        String opcion = JOptionPane.showInputDialog(mensaje);
-        return Integer.parseInt(opcion);
+    /**
+     * Obtiene un numero ingresado por el usuario
+     * 
+     * @param mensaje   Mensaje a enviar
+     * @param maxOption Numero maximo
+     * @return Numero ingresado
+     */
+    private static int getInt(String mensaje, int maxOption) {
+        try {
+            String opcion = JOptionPane.showInputDialog(null, mensaje, "Laboratorio01", 3);
+
+            // Finaliza si se coloca Cancelar
+            if (opcion == null) {
+                JOptionPane.showMessageDialog(null, "Programa finalizado.\nAdios.");
+                System.exit(1);
+                return 0;
+            }
+
+            int seleccion = Integer.parseInt(opcion);
+            if (seleccion > maxOption || seleccion < 1) {
+                JOptionPane.showMessageDialog(null, "Ingrese una opcion entre 1 y " + maxOption, "Numero inválido", 0);
+                return getInt(mensaje, maxOption);
+            }
+            return seleccion;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Ingrese un número válido", "Numero inválido", 0);
+            return getInt(mensaje, maxOption);
+        }
     }
 }
