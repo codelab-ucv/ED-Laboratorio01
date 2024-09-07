@@ -24,6 +24,7 @@ public class Main {
                 Ejercicio03.iniciar();
                 break;
             case 4:
+                Ejercicio04.iniciar();
                 break;
             case 5:
                 Ejercicio05.iniciar();
