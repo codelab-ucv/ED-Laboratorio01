@@ -1,7 +1,9 @@
 package ucv.codelab;
+
 import javax.swing.JOptionPane;
+
 public class Ejercicio03 {
- // Método iniciar
+
     public static void iniciar() {
         // Ingresar el nombre del obrero
         String nombre = JOptionPane.showInputDialog("Ingrese el nombre del obrero:");
@@ -10,7 +12,8 @@ public class Ejercicio03 {
         int horasTrabajadas = Integer.parseInt(JOptionPane.showInputDialog("Ingrese las horas trabajadas:"));
 
         // Ingresar el tipo de actividad
-        int tipoActividad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tipo de actividad (1: Pintado, 2: Laqueado, 3: Barnizado):"));
+        int tipoActividad = Integer.parseInt(
+                JOptionPane.showInputDialog("Ingrese el tipo de actividad (1: Pintado, 2: Laqueado, 3: Barnizado):"));
 
         // Definir el pago por hora según el tipo de actividad
         double pagoPorHora = 0;
